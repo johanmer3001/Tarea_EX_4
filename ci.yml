@@ -1,0 +1,26 @@
+
+
+name: CI - Validación básica
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  validar_codigo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Validación básica del código
+        run: |
+          echo "Verificando que el archivo index.html existe..."
+          if [ -f index.html ]; then
+            echo "Todo correcto: index.html existe."
+          else
+            echo "Error: index.html no encontrado."
+            exit 1
+          fi
+
+
